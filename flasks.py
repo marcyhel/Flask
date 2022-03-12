@@ -1,6 +1,13 @@
 import os
 from flask import Flask, jsonify, request
+import random
 
+class Car:
+    def __init__(self,nome):
+        self.nome=nome
+        self.cavalos=random.randint(0,100)
+    def addCavalo(self):
+        return self.cavalos+1
 
 app = Flask(__name__)
 
@@ -10,7 +17,8 @@ def hello():
 
 @app.route('/nome/<name>')
 def nomes(name):
-    return jsonify({"message": name})
+    car=Car(name)
+    return jsonify({"nome": car.nome,"cavalos":car.cavalos,"cavalos+1":car.addCavalo()})
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

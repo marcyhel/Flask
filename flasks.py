@@ -5,12 +5,12 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 @app.route('/')
-def nao_entre_em_panico():
+def hello():
     return jsonify({"message": "hello Word"})
 
 @app.route('/nome/<name>')
-def nao_entre_em_panico(nome):
-    return jsonify({"message": nome})
+def nomes(name):
+    return jsonify({"message": name})
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

@@ -6,9 +6,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def nao_entre_em_panico():
-    if request.headers.get('aa') == '42':
-        return jsonify({"42": "a resposta para a vida, o universo e tudo mais"})
     return jsonify({"message": "hello Word"})
+
+@app.route('/nome/<name>')
+def nao_entre_em_panico(nome):
+    return jsonify({"message": nome})
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
